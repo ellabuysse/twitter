@@ -46,7 +46,7 @@ static NSString * const baseURLString = @"https://api.twitter.com";
     
     self = [super initWithBaseURL:baseURL consumerKey:key consumerSecret:secret];
     if (self) {
-        NSLog(@"Successfully loaded home timeline");
+        NSLog(@"Successfully loaded key");
     }
 
     return self;
