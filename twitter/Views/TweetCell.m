@@ -16,7 +16,7 @@
     [super awakeFromNib];
     // Initialization code
     
-    self.profileImage.layer.cornerRadius = 35;
+    self.profileImage.layer.cornerRadius = 30;
         
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"MM/dd/yyyy";

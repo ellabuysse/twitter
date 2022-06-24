@@ -20,6 +20,12 @@
     [super viewDidLoad];
     self.textView.delegate = self;
     
+    
+    self.textView.layer.cornerRadius = 15;
+    self.textView.layer.borderWidth = 1.0;
+    self.textView.layer.borderColor = UIColor.blackColor.CGColor;
+    self.textView.textContainerInset = UIEdgeInsetsMake(15, 15, 15, 15);
+
     // Do any additional setup after loading the view.
 }
 

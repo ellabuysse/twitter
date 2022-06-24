@@ -56,6 +56,10 @@
     }];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [self fetchTweets];
+}
+
 - (IBAction)didTapLogout:(id)sender{
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
 
@@ -77,7 +81,7 @@
     cell.tweet = tweet;
     cell.author.text = tweet.user.name;
     cell.tweetText.text = tweet.text;
-    cell.screenName.text = tweet.user.screenName;
+    cell.screenName.text = [@"@" stringByAppendingString:cell.tweet.user.screenName];;
     cell.timeStamp.text = tweet.date.shortTimeAgoSinceNow;
     [cell.favBtn setTitle:[NSString stringWithFormat: @"%d", cell.tweet.favoriteCount] forState:UIControlStateNormal];
     [cell.retweetBtn setTitle:[NSString stringWithFormat: @"%d", cell.tweet.retweetCount] forState:UIControlStateNormal];
@@ -90,8 +94,7 @@
 
     NSString *URLString = tweet.user.profilePicture;
     NSURL *url = [NSURL URLWithString:URLString];
-    NSData *urlData = [NSData dataWithContentsOfURL:url];
-    
+
     [cell.profileImage setImageWithURL:url];
     
     if(cell.tweet.favorited) {
@@ -123,17 +126,17 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
      if ([[segue identifier] isEqualToString:@"composeViewSegue"]) {
-         UINavigationController *navigationController = [segue destinationViewController];
-         ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
+         ComposeViewController *composeController = [segue destinationViewController];
          composeController.delegate = self;
      }
      if ([[segue identifier] isEqualToString:@"detailsViewSegue"]) {
-         UINavigationController *navigationController = [segue destinationViewController];
-         //DetailsViewController *detailViewController = (DetailsViewController*)navigationController.topViewController;
-         //UITableViewCell *tappedCell = sender;
-         //TweetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tweetCell" forIndexPath:indexPath];
-         //Tweet *tweet = self.arrayOfTweets[indexPath.row];
-         //detailViewController.tweet = tweet;
+         DetailsViewController *detailsController = [segue destinationViewController];
+         
+         UITableViewCell *tappedCell = sender;
+         NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
+         
+         Tweet *tweet = self.arrayOfTweets[indexPath.row];
+         detailsController.tweet = tweet;
      }
  }
 

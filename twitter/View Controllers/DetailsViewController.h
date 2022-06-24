@@ -7,10 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Tweet.h"
 
 NS_ASSUME_NONNULL_BEGIN
+@protocol DetailsViewControllerDelegate
+- (void)didTweet:(Tweet *)tweet;
+@end
 
 @interface DetailsViewController : UIViewController
+
+@property (strong, nonatomic) Tweet *tweet;
+@property (nonatomic, weak) id<DetailsViewControllerDelegate> delegate;
 
 @end
 
