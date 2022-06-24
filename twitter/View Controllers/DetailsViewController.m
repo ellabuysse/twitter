@@ -101,7 +101,7 @@
 -(IBAction)didTapRetweet:(id) sender {
     if(self.tweet.retweeted) {
         self.tweet.retweeted = NO;
-        self.tweet.favoriteCount -= 1;
+        self.tweet.retweetCount -= 1;
         
         // TODO: Send a POST request to the POST favorites/create endpoint
         [[APIManager shared] unretweet:self.tweet completion:^(Tweet *tweet, NSError *error){
