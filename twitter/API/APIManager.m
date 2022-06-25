@@ -8,6 +8,7 @@
 
 #import "APIManager.h"
 #import "Tweet.h"
+#import "UIImageView+AFNetworking.h"
 
 static NSString * const baseURLString = @"https://api.twitter.com";
 
@@ -135,7 +136,6 @@ static NSString * const baseURLString = @"https://api.twitter.com";
         completion(nil, error);
     }];
 }
-
 
 
 @end

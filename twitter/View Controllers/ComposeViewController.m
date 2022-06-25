@@ -11,6 +11,7 @@
 
 @interface ComposeViewController () <UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *textView;
+@property (weak, nonatomic) IBOutlet UILabel *characterCount;
 @property (strong, nonatomic) NSString *userInput;
 @end
 
@@ -25,8 +26,19 @@
     self.textView.layer.borderWidth = 1.0;
     self.textView.layer.borderColor = UIColor.blackColor.CGColor;
     self.textView.textContainerInset = UIEdgeInsetsMake(15, 15, 15, 15);
+    
+    [self.characterCount setText:[NSString stringWithFormat:@"%d", 280]];
 
     // Do any additional setup after loading the view.
+}
+
+- (void)textViewDidChange:(UITextView *)textView {
+    NSInteger charactersLeft = 280 - [[self.textView text] length];
+    [self.characterCount setText:[NSString stringWithFormat:@"%ld", (long)charactersLeft]];
+    
+    if([[self.textView text] length] >= 280) {
+        self.textView.editable = NO;
+    }
 }
 
 - (IBAction)close:(id)sender {
@@ -66,3 +78,4 @@
 */
 
 @end
+
