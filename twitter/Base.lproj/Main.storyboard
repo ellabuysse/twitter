@@ -250,13 +250,21 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9D-Y9-kyW">
+                                <rect key="frame" x="318" y="384" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="MIw-vH-qBo"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="v9D-Y9-kyW" firstAttribute="trailing" secondItem="OXc-Lk-wyd" secondAttribute="trailing" id="HLf-ji-Uwm"/>
                             <constraint firstItem="OXc-Lk-wyd" firstAttribute="leading" secondItem="MIw-vH-qBo" secondAttribute="leading" constant="15" id="K7W-H4-q1F"/>
                             <constraint firstItem="MIw-vH-qBo" firstAttribute="trailing" secondItem="OXc-Lk-wyd" secondAttribute="trailing" constant="15" id="c6S-7c-dPk"/>
                             <constraint firstItem="OXc-Lk-wyd" firstAttribute="top" secondItem="MIw-vH-qBo" secondAttribute="top" constant="20" id="hse-nT-Itm"/>
+                            <constraint firstItem="v9D-Y9-kyW" firstAttribute="top" secondItem="OXc-Lk-wyd" secondAttribute="bottom" constant="15" id="vvw-WS-U4K"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="BTC-wV-Xay">
@@ -272,6 +280,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="characterCount" destination="v9D-Y9-kyW" id="vNb-mR-Mqe"/>
                         <outlet property="textView" destination="OXc-Lk-wyd" id="g36-b4-Juc"/>
                     </connections>
                 </viewController>
@@ -464,7 +473,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="EMf-6n-dBu"/>
+        <segue reference="HRf-An-ruP"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="TwitterLogoBlue" width="200" height="200"/>
